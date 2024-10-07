@@ -34,6 +34,8 @@ class Food extends Equatable {
         price,
         rate,
       ];
+
+  static fromJson(data) {}
 }
 
 List<Food> mockFoods = [

@@ -3,11 +3,9 @@ part of 'services.dart';
 class UserServices {
   static Future<ApiReturnValue<User>> signIn(String email, String password,
       {http.Client? client}) async {
-    if (client == null) {
-      client = http.Client();
-    }
+    client ??= http.Client();
 
-    String url = baseURL + '/login';
+    String url = '$baseURL/login';
 
     var response = await client.post(Uri.parse(url),
         headers: {
@@ -32,11 +30,9 @@ class UserServices {
 
   static Future<ApiReturnValue<User>> signUp(User user, String password,
       {File? pictureFile, http.Client? client}) async {
-    if (client == null) {
-      client = http.Client();
-    }
+    client ??= http.Client();
 
-    String url = baseURL + '/register';
+    String url = '$baseURL/register';
 
     print("test : $url");
 
@@ -82,15 +78,13 @@ class UserServices {
 
   static Future<ApiReturnValue<String>> uploadPicturePath(File pictureFile,
       {http.MultipartRequest? request}) async {
-    String url = baseURL + '/user/photo';
+    String url = '$baseURL/user/photo';
 
     var uri = Uri.parse(url);
 
-    if (request == null) {
-      request = http.MultipartRequest('POST', uri)
+    request ??= http.MultipartRequest('POST', uri)
         ..headers['Content-Type'] = 'application/json'
         ..headers['Authorization'] = 'Bearer ${User.token}';
-    }
 
     var multiPartFile =
         await http.MultipartFile.fromPath('file', pictureFile.path);

@@ -7,14 +7,15 @@ enum TransactionStatus {
   canceled,
 }
 
-class Transaction extends Equatable{
+class Transaction extends Equatable {
   final int? id;
   final Food? food;
-    final int? quantitiy;
+  final int? quantitiy;
   final int? total;
   final DateTime? dateTime;
   final TransactionStatus? status;
   final User? user;
+  final String? paymentUrl;
 
   Transaction({
     this.id,
@@ -24,6 +25,7 @@ class Transaction extends Equatable{
     this.dateTime,
     this.status,
     this.user,
+    this.paymentUrl,
   });
 
   Transaction copyWith({
@@ -34,32 +36,47 @@ class Transaction extends Equatable{
     DateTime? dateTime,
     TransactionStatus? status,
     User? user,
-}) {
+  }) {
     return Transaction(
-      id :id ?? this.id,
-      food :food ?? this.food,
-      quantitiy :quantitiy ?? this.quantitiy,
-      total :total ?? this.total,
-      dateTime :dateTime ?? this.dateTime,
-      status :status ?? this.status,
-      user :user ?? this.user,
+      id: id ?? this.id,
+      food: food ?? this.food,
+      quantitiy: quantitiy ?? this.quantitiy,
+      total: total ?? this.total,
+      dateTime: dateTime ?? this.dateTime,
+      status: status ?? this.status,
+      user: user ?? this.user,
     );
   }
+
+  factory Transaction.fromJson(Map<String, dynamic> data) => Transaction(
+      id: data['id'],
+      food: Food.fromJson(data['food']),
+      quantitiy: data['quantitiy'],
+      total: data['total'],
+      dateTime: DateTime.fromMillisecondsSinceEpoch(data['created_at']),
+      user: User.fromJson(data['user']),
+      paymentUrl: data['payment_url'],
+      status: data['status'] == 'PENDING' ? TransactionStatus.pending :
+              data['status'] == 'ON_DELIVERY' ? TransactionStatus.on_delivery :
+              data['status'] == 'CANCELED' ? TransactionStatus.canceled :
+              TransactionStatus.delivered
+
+      );
 
   @override
   // TODO: implement props
   List<Object?> get props => [
-    id,
-    food,
-    quantitiy,
-    total,
-    dateTime,
-    status,
-    user,
-  ];
+        id,
+        food,
+        quantitiy,
+        total,
+        dateTime,
+        status,
+        user,
+      ];
 }
 
-List<Transaction> mockTransaction =[
+List<Transaction> mockTransaction = [
   Transaction(
     id: 1,
     food: mockFoods[1],

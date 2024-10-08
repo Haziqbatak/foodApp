@@ -76,8 +76,8 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                         List<Transaction> transactions = (selectedIndex == 0
                             ? state.transactions
                                 .where((e) =>
-                                    e.status == TransactionStatus.delivered ||
-                                    e.status == TransactionStatus.canceled)
+                                    e.status == TransactionStatus.pending ||
+                                    e.status == TransactionStatus.on_delivery)
                                 .toList()
                             : state.transactions
                                 .where((e) =>

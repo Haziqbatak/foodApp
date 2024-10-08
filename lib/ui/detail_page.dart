@@ -66,7 +66,7 @@ class _DetailPageState extends State<DetailPage> {
                           color: Colors.white12,
                         ),
                         child:
-                            Image.asset('assets/images/back_arrow_white.png'),
+                            Image.asset('assets/back_arrow_white.png'),
                       ),
                     ),
                   ),
@@ -123,7 +123,7 @@ class _DetailPageState extends State<DetailPage> {
                                   decoration: const BoxDecoration(
                                     image: DecorationImage(
                                       image: AssetImage(
-                                          'assets/images/btn_min.png'),
+                                          'assets/btn_min.png'),
                                     ),
                                   ),
                                 ),
@@ -152,7 +152,7 @@ class _DetailPageState extends State<DetailPage> {
                                   decoration: const BoxDecoration(
                                     image: DecorationImage(
                                       image: AssetImage(
-                                          'assets/images/btn_add.png'),
+                                          'assets/btn_add.png'),
                                     ),
                                   ),
                                 ),

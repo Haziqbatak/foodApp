@@ -26,18 +26,42 @@ class TransactionServices {
         .map((e) => Transaction.fromJson(e))
         .toList();
 
-    return ApiReturnValue(value: mockTransaction);
+    return ApiReturnValue(value: transaction);
   }
 
   static Future<ApiReturnValue<Transaction>> submitTransaction(
-      Transaction transaction) async {
-    await Future.delayed(const Duration(seconds: 2));
+      Transaction transaction,
+      {http.Client? client}) async {
+    // await Future.delayed(const Duration(seconds: 2));
+    client ??= http.Client();
 
-    return ApiReturnValue(
-        value: transaction.copyWith(
-      id: 123,
-      status: TransactionStatus.pending,
-      total: (transaction.quantitiy! + transaction.food!.price! + 1.1).toInt(),
-    ));
+    String url = baseURL + '/checkout';
+
+    print("URL Submit Transaction : $url");
+
+    var response = await client.post(Uri.parse(url),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ${User.token}'
+        },
+        body: jsonEncode(<String, dynamic>{
+          'food_id': transaction.food!.id,
+          'user_id': transaction.user!.id,
+          'quantity': transaction.quantitiy,
+          'total': transaction.total,
+          'status': 'PENDING',
+        }));
+
+    print('Response Submit Transaction : ${response.body}');
+
+    if (response.statusCode != 200) {
+      return ApiReturnValue(message: 'Failed To Submit Transaction');
+    }
+
+    var data = jsonDecode(response.body);
+
+    Transaction submit = Transaction.fromJson(data['data']);
+
+    return ApiReturnValue(value: submit);
   }
 }

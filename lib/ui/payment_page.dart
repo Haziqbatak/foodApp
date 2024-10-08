@@ -346,14 +346,14 @@ class _PaymentPageState extends State<PaymentPage> {
                         isLoading = true;
                       });
 
-                      bool result = await context.read<TransactionCubit>().submitTransaction(
+                      var paymentUrl = await context.read<TransactionCubit>().submitTransaction(
                         widget.transaction!.copyWith(
                             dateTime: DateTime.now(),
                             total: (widget.transaction!.total! * 1.1).toInt() + 50000,
                         )
                       );
-                      if(result){
-                        Get.to(const SuccessOrderPage());
+                      if(paymentUrl != null){
+                        Get.to(PaymentMethodPage(paymentUrl: paymentUrl,));
                       } else {
                         Get.snackbar(
                           '',

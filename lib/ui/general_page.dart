@@ -54,7 +54,7 @@ class GeneralPage extends StatelessWidget {
                                     decoration: const BoxDecoration(
                                       image: DecorationImage(
                                         image: AssetImage(
-                                          'assets/images/back_arrow.png',
+                                          'assets/back_arrow.png',
                                         ),
                                       ),
                                     ),

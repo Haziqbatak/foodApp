@@ -37,7 +37,7 @@ class CustomBottomNavbar extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(
-                    'assets/images/ic_home' +
+                    'assets/ic_home' +
                         ((selectIndex == 0) ? '.png' : '_normal.png'),
                   ),
                   fit: BoxFit.contain
@@ -57,7 +57,7 @@ class CustomBottomNavbar extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(
-                      'assets/images/ic_order' +
+                      'assets/ic_order' +
                           ((selectIndex == 1) ? '.png' : '_normal.png'),
                     ),
                     fit: BoxFit.contain
@@ -77,7 +77,7 @@ class CustomBottomNavbar extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(
-                      'assets/images/ic_profile' +
+                      'assets/ic_profile' +
                           ((selectIndex == 2) ? '.png' : '_normal.png'),
                     ),
                     fit: BoxFit.contain

@@ -18,7 +18,7 @@ class PaymentMethodPage extends StatelessWidget {
         },
         buttonTitle2: 'Continue',
         buttonTap2: () {
-          Get.to(SuccessOrderPage());
+          Get.to(const SuccessOrderPage());
         },
       ),
     );

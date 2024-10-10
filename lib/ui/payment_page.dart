@@ -32,6 +32,30 @@ class _PaymentPageState extends State<PaymentPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+              Text(
+                  'ID Food ${widget.transaction!.food!.id}',
+                  style: blackFontStyle3.copyWith(
+                    fontSize: 16,
+                  ),
+                ),
+                Text(
+                  'ID user ${widget.transaction!.user!.id}',
+                  style: blackFontStyle3.copyWith(
+                    fontSize: 16,
+                  ),
+                ),
+                Text(
+                  'quantity ${widget.transaction!.quantitiy}',
+                  style: blackFontStyle3.copyWith(
+                    fontSize: 16,
+                  ),
+                ),
+                Text(
+                  'total ${widget.transaction!.total}',
+                  style: blackFontStyle3.copyWith(
+                    fontSize: 16,
+                  ),
+                ),
                 Text(
                   'Item Order',
                   style: blackFontStyle3.copyWith(
@@ -64,7 +88,7 @@ class _PaymentPageState extends State<PaymentPage> {
                       children: [
                         SizedBox(
                           width: MediaQuery.of(context).size.width - 189,
-                          child: Text(widget.transaction?.food?.name ?? 'No Name',
+                          child: Text(widget.transaction?.food?.name ?? 'Name',
                             style: blackFontStyle2,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,

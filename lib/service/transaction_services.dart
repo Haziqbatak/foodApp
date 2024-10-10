@@ -35,7 +35,7 @@ class TransactionServices {
     // await Future.delayed(const Duration(seconds: 2));
     client ??= http.Client();
 
-    String url = baseURL + '/checkout';
+    String url = '$baseURL/checkout';
 
     print("URL Submit Transaction : $url");
 

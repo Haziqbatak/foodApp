@@ -32,18 +32,18 @@ class _ProfilePageState extends State<ProfilePage> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                child: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  margin: const EdgeInsets.all(8),
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(
-                          "assets/photo.png",
-                        ),
-                        fit: BoxFit.cover),
-                  ),
-                ),
+                // child: Container(
+                //   width: double.infinity,
+                //   height: double.infinity,
+                //   margin: const EdgeInsets.all(8),
+                //   decoration: const BoxDecoration(
+                //     image: DecorationImage(
+                //         image: AssetImage(
+                //           "assets/photo.png",
+                //         ),
+                //         fit: BoxFit.cover),
+                //   ),
+                // ),
               ),
               Text(
                 mockUser.name ?? "name",

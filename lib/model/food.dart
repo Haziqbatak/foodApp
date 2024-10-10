@@ -40,7 +40,7 @@ class Food extends Equatable {
 
 List<Food> mockFoods = [
   Food(
-      id: 1,
+      id: 2,
       picturePath:
           'https://i.pinimg.com/236x/5b/f2/7e/5bf27e721ed7bc858e0a7f0d905632e8.jpg',
       name: 'Sate Sayur Sultan',
@@ -50,7 +50,7 @@ List<Food> mockFoods = [
       rate: 4.2,
       types: [FoodType.new_food, FoodType.popular],),
   Food(
-      id: 2,
+      id: 1,
       picturePath:
           'https://i.pinimg.com/236x/e4/c8/ac/e4c8ac48c71738d0493b6e824f0094ed.jpg',
       name: 'Nasi Goreng Kambing',

@@ -28,7 +28,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                    image: NetworkImage('https://i.pinimg.com/564x/6d/20/2d/6d202d38b84c6ec1011f6b3f3cf848e8.jpg'),
+                    image: NetworkImage(
+                        'https://i.pinimg.com/564x/6d/20/2d/6d202d38b84c6ec1011f6b3f3cf848e8.jpg'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -90,13 +91,19 @@ class AccountTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         RowTab(title: 'Edit Profile'),
         RowTab(title: 'Home Address'),
         RowTab(title: 'Security'),
         RowTab(title: 'Payments'),
-        RowTab(title: 'Sign Out'),
+        GestureDetector(
+          onTap: () {
+            context.read<UserCubit>().signOut();
+            Get.to(SignInPage());
+          },
+          child: Text("Sign Out"),
+        ),
       ],
     );
   }

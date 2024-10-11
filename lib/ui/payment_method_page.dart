@@ -11,7 +11,7 @@ class PaymentMethodPage extends StatelessWidget {
       body: IllustrationPage(
         title: 'Finish Your Payment',
         subtitle: 'Please select your favorite/npayment method',
-        picturePath: 'assets/payment.png',
+        picturePath: 'assets/Payment.png',
         buttonTitle1: 'Payment Method',
         buttonTap1: () async {
           await launch(paymentUrl);

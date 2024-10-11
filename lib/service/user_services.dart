@@ -8,9 +8,7 @@ class UserServices {
     String url = '$baseURL/login';
 
     var response = await client.post(Uri.parse(url),
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: ApiServices.headersPost(),
         body: jsonEncode(<String, String>{
           'email': email,
           'password': password,
@@ -25,7 +23,7 @@ class UserServices {
     User.token = data['data']['access_token'];
     User value = User.fromJson(data['data']['user']);
 
-    return ApiReturnValue(value: mockUser);
+    return ApiReturnValue(value: value);
   }
 
   static Future<ApiReturnValue<User>> signUp(User user, String password,
@@ -36,24 +34,20 @@ class UserServices {
 
     print("test : $url");
 
-    var response = await http.post(
-      Uri.parse(url),
-      headers: {
-        'Content-Type': 'application/json',
-        //Content-Type => melakukan request dengan format json
-        //Accept => menerima response dengan format json
-      },
-      body: jsonEncode(<String, String>{
-        'name': user.name!,
-        'email': user.email!,
-        'password': password,
-        'password_confirmation': password,
-        'address': user.address!,
-        'city': user.city!,
-        'houseNumber': user.houseNumber!,
-        'phoneNumber': user.phoneNumber!,
-      },)
-    );
+    var response = await http.post(Uri.parse(url),
+        headers: ApiServices.headersPost(),
+        body: jsonEncode(
+          <String, String>{
+            'name': user.name!,
+            'email': user.email!,
+            'password': password,
+            'password_confirmation': password,
+            'address': user.address!,
+            'city': user.city!,
+            'houseNumber': user.houseNumber!,
+            'phoneNumber': user.phoneNumber!,
+          },
+        ));
 
     if (response.statusCode != 200) {
       return ApiReturnValue(message: 'Register Failed, please try again');
@@ -68,8 +62,9 @@ class UserServices {
     if (pictureFile != null) {
       ApiReturnValue<String> result = await uploadPicturePath(pictureFile);
 
-      if(result.value != null){
-        value = value.copyWith(picturePath: 'https://food.rtid73.com/storage/${result.value}');
+      if (result.value != null) {
+        value = value.copyWith(
+            picturePath: 'https://food.rtid73.com/storage/${result.value}');
       }
     }
 
@@ -83,8 +78,8 @@ class UserServices {
     var uri = Uri.parse(url);
 
     request ??= http.MultipartRequest('POST', uri)
-        ..headers['Content-Type'] = 'application/json'
-        ..headers['Authorization'] = 'Bearer ${User.token}';
+      ..headers['Content-Type'] = 'application/json'
+      ..headers['Authorization'] = 'Bearer ${User.token}';
 
     var multiPartFile =
         await http.MultipartFile.fromPath('file', pictureFile.path);
@@ -104,5 +99,25 @@ class UserServices {
     } else {
       return ApiReturnValue(message: 'Upload Picture Failed, please try again');
     }
+  }
+
+  static Future<ApiReturnValue<bool>> logout({http.Client? client}) async {
+    client ??= http.Client();
+
+    String url = '$baseURL/logout';
+    print("URL Logout : $url");
+
+    var response = await client.post(
+      Uri.parse(url),
+      headers: ApiServices.headersPost(token: User.token),
+    );
+
+    print("Response Logout : ${response.body}");
+
+    if(response.statusCode != 200){
+      return ApiReturnValue(message: 'Logout Failed, please try again');
+    }
+
+    return ApiReturnValue(value: true);
   }
 }

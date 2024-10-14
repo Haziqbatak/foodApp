@@ -89,8 +89,15 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                               .map(
                                 (e) => Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: OrderListItem(
-                                      transaction: e, itemWidth: listItemWidth),
+                                  child: GestureDetector(
+                                    onTap: () async {
+                                      await launch(e.paymentUrl!);
+                                    },
+                                    child: OrderListItem(
+                                      transaction: e,
+                                      itemWidth: listItemWidth,
+                                    ),
+                                  ),
                                 ),
                               )
                               .toList(),

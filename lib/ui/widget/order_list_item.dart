@@ -88,16 +88,18 @@ class OrderListItem extends StatelessWidget {
                             )
                           : (transaction.status == TransactionStatus.pending)
                               ? Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.orangeAccent,
-                                      borderRadius: BorderRadius.circular(15)),
-                                  padding: EdgeInsets.symmetric(horizontal: 5),
-                                  child: Text(
-                                    'Pending',
-                                    style: blackFontStyle2.copyWith(
-                                        color: Colors.white),
-                                  ),
-                                )
+                                decoration: BoxDecoration(
+                                    color: Colors.orangeAccent,
+                                    borderRadius:
+                                        BorderRadius.circular(15)),
+                                padding:
+                                    EdgeInsets.symmetric(horizontal: 5),
+                                child: Text(
+                                  'Pending',
+                                  style: blackFontStyle2.copyWith(
+                                      color: Colors.white),
+                                ),
+                              )
                               : Container(
                                   decoration: BoxDecoration(
                                       color: Colors.blueAccent,

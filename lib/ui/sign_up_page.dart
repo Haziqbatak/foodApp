@@ -186,14 +186,64 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
                 onPressed: () {
-                  Get.to(() => AddressPage(
-                        user: User(
-                          name: nameController.text,
-                          email: emailController.text,
+                  if (nameController.text == "" ||
+                      emailController.text == "" ||
+                      passwordController.text == "") {
+                    Get.snackbar(
+                      '',
+                      '',
+                      backgroundColor: 'D9435E'.toColor(),
+                      icon: const Icon(
+                        MdiIcons.closeCircleOutline,
+                        color: Colors.white,
+                      ),
+                      titleText: Text(
+                        'Please fill all fields',
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
                         ),
-                        password: passwordController.text,
-                        pictureFile: pictureFile!,
-                      ));
+                      ),
+                      messageText: Text(
+                        'We need your name, email and password to register',
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                        ),
+                      ),
+                    );
+                  } else if (pictureFile == null) {
+                    Get.snackbar(
+                      '',
+                      '',
+                      backgroundColor: 'D9435E'.toColor(),
+                      icon: const Icon(
+                        MdiIcons.closeCircleOutline,
+                        color: Colors.white,
+                      ),
+                      titleText: Text(
+                        'Please select your profile picture',
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      messageText: Text(
+                        'We need your profile to identify you',
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                        ),
+                      ),
+                    );
+                  } else {
+                    Get.to(() => AddressPage(
+                          user: User(
+                            name: nameController.text,
+                            email: emailController.text,
+                          ),
+                          password: passwordController.text,
+                          pictureFile: pictureFile!,
+                        ));
+                  }
                 },
                 child: Text(
                   'Continue',

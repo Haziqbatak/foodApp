@@ -219,7 +219,54 @@ class _AddressPageState extends State<AddressPage> {
                       ),
                     ),
                     onPressed: () async {
+                      if (addressController.text == "" ||
+                          phoneNumberController.text == "" ||
+                          houseNumberController.text == "") {
+                        Get.snackbar(
+                          '',
+                          '',
+                          backgroundColor: 'D9435E'.toColor(),
+                          icon: const Icon(
+                            MdiIcons.closeCircleOutline,
+                            color: Colors.white,
+                          ),
+                          titleText: Text(
+                            'Please fill all fields',
+                            style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          messageText: Text(
+                            'We need your name, email and password to register',
+                            style: GoogleFonts.poppins(
+                              color: Colors.white,
+                            ),
+                          ),
+                        );
+                      }
+
                       User user = widget.user.copyWith(
+                          address: addressController.text,
+                          phoneNumber: phoneNumberController.text,
+                          houseNumber: houseNumberController.text,
+                          city: selectedCity);
+
+                      setState(() {
+                        isLoading = true;
+                      });
+
+                      await context.read<UserCubit>().signUp(
+                          user, widget.password,
+                          pictureFile: widget.pictureFile);
+                      UserState state = context.read<UserCubit>().state;
+
+                      if (state is UserLoaded) {
+                        context.read<FoodCubit>().getFoods();
+                        context.read<TransactionCubit>().getTransactions();
+                        Get.to(() => const MainPage());
+                      } else {
+                        User user = widget.user.copyWith(
                           address: addressController.text,
                           phoneNumber: phoneNumberController.text,
                           houseNumber: houseNumberController.text,
@@ -264,6 +311,7 @@ class _AddressPageState extends State<AddressPage> {
                         setState(() {
                           isLoading = false;
                         });
+                      }
                       }
                     },
                     child: Text(

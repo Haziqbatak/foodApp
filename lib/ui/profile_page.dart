@@ -25,36 +25,28 @@ class _ProfilePageState extends State<ProfilePage> {
                 width: 100,
                 height: 100,
                 margin: const EdgeInsets.only(bottom: defaultMargin),
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
                     image: NetworkImage(
-                        'https://i.pinimg.com/564x/6d/20/2d/6d202d38b84c6ec1011f6b3f3cf848e8.jpg'),
+                      (context.read<UserCubit>().state as UserLoaded)
+                              .user
+                              .picturePath ??
+                          'https://ui-avatars.com/api/?name=${(context.read<UserCubit>().state as UserLoaded)}',
+                    ),
                     fit: BoxFit.cover,
                   ),
                 ),
-                // child: Container(
-                //   width: double.infinity,
-                //   height: double.infinity,
-                //   margin: const EdgeInsets.all(8),
-                //   decoration: const BoxDecoration(
-                //     image: DecorationImage(
-                //         image: AssetImage(
-                //           "assets/photo.png",
-                //         ),
-                //         fit: BoxFit.cover),
-                //   ),
-                // ),
               ),
               Text(
-                mockUser.name ?? "name",
-                style: blackFontStyle1.copyWith(
-                  color: Colors.black,
-                ),
+                (context.read<UserCubit>().state as UserLoaded).user.name ??
+                    'Name',
+                style: blackFontStyle1,
               ),
               Text(
-                mockUser.email ?? "email",
-                style: blackFontStyle2.copyWith(),
+                (context.read<UserCubit>().state as UserLoaded).user.email ??
+                    'email',
+                style: greyFontStyle,
               ),
             ],
           ),

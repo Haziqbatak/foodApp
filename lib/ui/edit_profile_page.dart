@@ -184,10 +184,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       ? loadingIndicator
                       : ElevatedButton(
                           onPressed: () async {
-                            setState(() {
-                              isLoading = true;
-                            });
-
                             User user =
                                 (context.read<UserCubit>().state as UserLoaded)
                                     .user
@@ -226,11 +222,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                   ),
                                 ),
                               );
-                              setState(() {
-                                isLoading = false;
-                              });
-
-                              Get.back();
                             } else {
                               Get.snackbar(
                                 '',
@@ -254,10 +245,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                   ),
                                 ),
                               );
-                              setState(() {
-                                isLoading = false;
-                              });
                             }
+                            setState(() {
+                              isLoading = false;
+                            });
+
+                            Get.back();
+                            context.read<UserCubit>().getUser(user);
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: greyColor,

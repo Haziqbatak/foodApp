@@ -284,7 +284,7 @@ class _AddressPageState extends State<AddressPage> {
                       if (state is UserLoaded) {
                         context.read<FoodCubit>().getFoods();
                         context.read<TransactionCubit>().getTransactions();
-                        Get.to(() => const MainPage());
+                        Get.to(() => SuccessSignUpPage());
                       } else {
                         Get.snackbar(
                           '',

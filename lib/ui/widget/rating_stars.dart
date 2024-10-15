@@ -7,18 +7,18 @@ class RatingStars extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int? _numberOfStars = rate?.round();
+    int? numberOfStars = rate?.round();
     return Row(
       children: List<Widget>.generate(
             5,
             (index) => Icon(
-              (index < _numberOfStars!) ? MdiIcons.star : MdiIcons.starOutline,
+              (index < numberOfStars!) ? MdiIcons.star : MdiIcons.starOutline,
               size: 12,
               color: mainColor,
             ),
           ) +
           [
-            SizedBox(
+            const SizedBox(
               width: 4,
             ),
             Text(

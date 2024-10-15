@@ -19,7 +19,7 @@ class CustomBottomNavbar extends StatelessWidget {
               color: Colors.black.withOpacity(0.1),
               spreadRadius: 3,
               blurRadius: 7,
-              offset: Offset(0, -2)),
+              offset: const Offset(0, -2)),
         ],
       ),
       child: Row(
@@ -27,18 +27,15 @@ class CustomBottomNavbar extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: (){
-              if(onTap != null){
-                onTap(0);
-              }
-            },
+              onTap(0);
+                        },
             child: Container(
               width: 32,
               height: 32,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(
-                    'assets/ic_home' +
-                        ((selectIndex == 0) ? '.png' : '_normal.png'),
+                    'assets/ic_home${(selectIndex == 0) ? '.png' : '_normal.png'}',
                   ),
                   fit: BoxFit.contain
                 ),
@@ -47,18 +44,15 @@ class CustomBottomNavbar extends StatelessWidget {
           ),
           GestureDetector(
             onTap: (){
-              if(onTap != null) {
-                onTap(1);
-              }
-            },
+              onTap(1);
+                        },
             child: Container(
               width: 32,
               height: 32,
               decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(
-                      'assets/ic_order' +
-                          ((selectIndex == 1) ? '.png' : '_normal.png'),
+                      'assets/ic_order${(selectIndex == 1) ? '.png' : '_normal.png'}',
                     ),
                     fit: BoxFit.contain
                 ),
@@ -67,18 +61,15 @@ class CustomBottomNavbar extends StatelessWidget {
           ),
           GestureDetector(
             onTap: (){
-              if(onTap != null){
-                onTap(2);
-              }
-            },
+              onTap(2);
+                        },
             child: Container(
               width: 32,
               height: 32,
               decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(
-                      'assets/ic_profile' +
-                          ((selectIndex == 2) ? '.png' : '_normal.png'),
+                      'assets/ic_profile${(selectIndex == 2) ? '.png' : '_normal.png'}',
                     ),
                     fit: BoxFit.contain
                 ),

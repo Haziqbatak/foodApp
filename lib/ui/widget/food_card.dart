@@ -18,7 +18,7 @@ class FoodCard extends StatelessWidget {
             color: Colors.black.withOpacity(0.1),
             blurRadius: 5,
             spreadRadius: 3,
-            offset: Offset(1, 1),
+            offset: const Offset(1, 1),
           )
         ],
       ),
@@ -34,7 +34,7 @@ class FoodCard extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(12, 12, 12, 6),
+            margin: const EdgeInsets.fromLTRB(12, 12, 12, 6),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

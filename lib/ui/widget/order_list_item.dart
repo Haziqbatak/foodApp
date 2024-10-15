@@ -67,7 +67,7 @@ class OrderListItem extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: Colors.green,
                               borderRadius: BorderRadius.circular(15)),
-                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          padding: const EdgeInsets.symmetric(horizontal: 5),
                           child: Text(
                             'Delivered',
                             style:
@@ -79,7 +79,7 @@ class OrderListItem extends StatelessWidget {
                               decoration: BoxDecoration(
                                   color: Colors.red,
                                   borderRadius: BorderRadius.circular(15)),
-                              padding: EdgeInsets.symmetric(horizontal: 5),
+                              padding: const EdgeInsets.symmetric(horizontal: 5),
                               child: Text(
                                 'Canceled',
                                 style: blackFontStyle2.copyWith(
@@ -93,7 +93,7 @@ class OrderListItem extends StatelessWidget {
                                     borderRadius:
                                         BorderRadius.circular(15)),
                                 padding:
-                                    EdgeInsets.symmetric(horizontal: 5),
+                                    const EdgeInsets.symmetric(horizontal: 5),
                                 child: Text(
                                   'Pending',
                                   style: blackFontStyle2.copyWith(
@@ -104,7 +104,7 @@ class OrderListItem extends StatelessWidget {
                                   decoration: BoxDecoration(
                                       color: Colors.blueAccent,
                                       borderRadius: BorderRadius.circular(15)),
-                                  padding: EdgeInsets.symmetric(horizontal: 5),
+                                  padding: const EdgeInsets.symmetric(horizontal: 5),
                                   child: Row(
                                     children: [
                                       Text(
@@ -112,7 +112,7 @@ class OrderListItem extends StatelessWidget {
                                         style: blackFontStyle2.copyWith(
                                             color: Colors.white),
                                       ),
-                                      Icon(
+                                      const Icon(
                                         Icons.motorcycle,
                                         color: Colors.white,
                                       )

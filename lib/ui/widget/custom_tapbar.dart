@@ -13,12 +13,12 @@ class CustomTapbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 50,
       child: Stack(
         children: [
           Container(
-            padding: EdgeInsets.only(top: 48),
+            padding: const EdgeInsets.only(top: 48),
             height: 1,
             color: 'F2F2F2'.toColor(),
           ),
@@ -27,7 +27,7 @@ class CustomTapbar extends StatelessWidget {
             children: titles
                 .map(
                   (e) => Padding(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       left: defaultMargin,
                     ),
                     child: Column(
@@ -51,7 +51,7 @@ class CustomTapbar extends StatelessWidget {
                         Container(
                           width: 40,
                           height: 3,
-                          margin: EdgeInsets.only(top: 13),
+                          margin: const EdgeInsets.only(top: 13),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             color: (titles.indexOf(e) == selectedIndex)

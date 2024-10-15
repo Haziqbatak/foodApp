@@ -85,7 +85,12 @@ class AccountTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        RowTab(title: 'Edit Profile'),
+        GestureDetector(
+          onTap: () {
+            Get.to(EditProfilePage());
+          },
+          child: RowTab(title: 'Edit Profile'),
+        ),
         RowTab(title: 'Home Address'),
         RowTab(title: 'Security'),
         RowTab(title: 'Payments'),

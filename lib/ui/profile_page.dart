@@ -83,11 +83,17 @@ class AccountTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void refresh() {
+      context
+          .read<UserCubit>()
+          .getUser((context.read<UserCubit>().state as UserLoaded).user);
+    }
+
     return Column(
       children: [
         GestureDetector(
           onTap: () {
-            Get.to(EditProfilePage());
+            Get.to(EditProfilePage())!.then((value) => refresh());
           },
           child: RowTab(title: 'Edit Profile'),
         ),

@@ -11,7 +11,7 @@ class SuccessSignUpPage extends StatelessWidget {
       picturePath: 'assets/food_wishes.png',
       buttonTitle1: 'Find Foods',
       buttonTap1: () {
-        Get.to(MainPage());
+        Get.to(const MainPage());
       },
     );
   }

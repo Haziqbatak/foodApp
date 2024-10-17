@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:io';
 import 'dart:math';
 
@@ -12,7 +11,6 @@ import 'package:food_app/ui/edit_profile_page.dart';
 import 'package:food_app/ui/widget/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:supercharged/supercharged.dart';

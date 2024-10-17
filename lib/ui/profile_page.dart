@@ -93,19 +93,19 @@ class AccountTab extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            Get.to(EditProfilePage())!.then((value) => refresh());
+            Get.to(const EditProfilePage())!.then((value) => refresh());
           },
-          child: RowTab(title: 'Edit Profile'),
+          child: const RowTab(title: 'Edit Profile'),
         ),
-        RowTab(title: 'Home Address'),
-        RowTab(title: 'Security'),
-        RowTab(title: 'Payments'),
+        const RowTab(title: 'Home Address'),
+        const RowTab(title: 'Security'),
+        const RowTab(title: 'Payments'),
         GestureDetector(
           onTap: () {
             context.read<UserCubit>().signOut();
-            Get.to(SignInPage());
+            Get.to(const SignInPage());
           },
-          child: Text("Sign Out"),
+          child: const Text("Sign Out"),
         ),
       ],
     );

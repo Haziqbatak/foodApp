@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 import 'package:food_app/cubit/cubit.dart';
-import 'package:food_app/main.dart';
 import 'package:food_app/model/models.dart';
 import 'package:food_app/service/services.dart';
 import 'package:food_app/shared/shared.dart';
@@ -44,7 +43,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Edit Profile',
         ),
         backgroundColor: mainColor,
@@ -178,8 +177,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 Container(
                   width: double.infinity,
                   height: 45,
-                  margin: EdgeInsets.only(top: 12),
-                  padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+                  margin: const EdgeInsets.only(top: 12),
+                  padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
                   child: (isLoading == true)
                       ? loadingIndicator
                       : ElevatedButton(
